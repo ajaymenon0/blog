@@ -1,6 +1,24 @@
+@import './switch.css';
+
+:root {
+  --dark: #333333;
+  --light: #ffffff;
+}
+
 body {
   font-family: Helvetica, sans-serif;
   padding: 2rem;
+  transition: background-color 300ms;
+}
+
+body.light {
+  color: var(--dark);
+  background-color: var(--light);
+}
+
+body.dark {
+  color: var(--light);
+  background-color: var(--dark);
 }
 
 b {
@@ -19,7 +37,14 @@ header {
 header a {
   display: inline-block;
   margin-bottom: 1rem;
-  color: #333;
+}
+
+.light header a {
+  color: var(--dark);
+}
+
+.dark header a {
+  color: var(--light);
 }
 
 header h1 {
@@ -41,15 +66,18 @@ header h3 {
   margin: auto;
 }
 
-.posts a {
-  text-decoration: none;
-  color: #333;
+.light .posts a {
+  color: var(--dark);
+}
+
+.dark .posts a {
+  color: var(--light);
 }
 
 .posts li {
-  border: 1px solid #999;
   padding: 15px;
   margin-bottom: 1rem;
+  font-size: 1.5rem;
 }
 
 article {
