@@ -1,9 +1,19 @@
 @import './switch.css';
 @import './sidebar.css';
 
-:root {
-  --dark: #333333;
-  --light: #ffffff;
+.light {
+  --textColor: #333333;
+  --bgColor: #ffffff;
+}
+
+.dark {
+  --textColor: #ffffff;
+  --bgColor: #333333;
+}
+
+.sepia {
+  --textColor: #543200;
+  --bgColor: #fff4dc;
 }
 
 body {
@@ -12,14 +22,9 @@ body {
   transition: background-color 300ms;
 }
 
-body.light {
-  color: var(--dark);
-  background-color: var(--light);
-}
-
-body.dark {
-  color: var(--light);
-  background-color: var(--dark);
+body {
+  color: var(--textColor);
+  background-color: var(--bgColor);
 }
 
 b {
@@ -38,14 +43,7 @@ header {
 header a {
   display: inline-block;
   margin-bottom: 1rem;
-}
-
-.light header a {
-  color: var(--dark);
-}
-
-.dark header a {
-  color: var(--light);
+  color: var(--textColor);
 }
 
 header h1 {
@@ -67,12 +65,8 @@ header h3 {
   margin: auto;
 }
 
-.light .posts a {
-  color: var(--dark);
-}
-
-.dark .posts a {
-  color: var(--light);
+.posts a {
+  color: var(--textColor);
 }
 
 .posts li {
