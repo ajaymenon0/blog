@@ -96,3 +96,12 @@ article blockquote:before, article blockquote:after {
   margin: 0 4px;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
+article .hero {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+article a {
+  color: var(--textColor);
+}
