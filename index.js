@@ -93,7 +93,7 @@ function build () {
 
 const buildPostCard = (metadata) => {
   const dateString = new Date(metadata.postedOn).toDateString();
-  return `<li><a href="./${metadata.path}/">${metadata?.title || ''}</a><br><h6>${dateString}</h6></li>`
+  return `<li><a href="./${metadata.path}/">${metadata?.title || ''}</a><br><h3>${dateString}</h3></li>`
 }
 
 rimraf(`${BUILD_PATH}/*`, () => {
