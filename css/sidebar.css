@@ -27,10 +27,14 @@
   outline: none;
 }
 
+/* .sidebar button {
+  color: #00000066;
+} */
+
 .dark .sidebar button {
-  color: var(--light);
+  color: #00000066;
 }
 
 .light .sidebar button {
-  color: var(--dark);
+  color: #00000066;
 }
