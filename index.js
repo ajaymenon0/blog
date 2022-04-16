@@ -38,7 +38,7 @@ function build () {
           const $ = cheerio.load(TEMPLATE_POST);
           meta.path = dir;
           allPostMetaData.push(meta);
-
+          
           if(allPostMetaData.length === allPostDirs.length) {
             const sortedPosts = allPostMetaData.sort((a,b) => {
               const A = new Date(a.postedOn).getTime();
@@ -93,7 +93,7 @@ function build () {
 
 const buildPostCard = (metadata) => {
   const dateString = new Date(metadata.postedOn).toDateString();
-  return `<li><a href="./${metadata.path}/">${metadata?.title || ''}</a><br><h3>${dateString}</h3></li>`
+  return `<a href="./${metadata.path}/"><li><h2>${metadata?.title || ''}</h2><p>${metadata.description}</p><h3>${dateString}</h3></li></a>`
 }
 
 rimraf(`${BUILD_PATH}/*`, () => {
