@@ -1,6 +1,6 @@
 const { readdirSync, readFileSync } = require('fs');
 const { mkdir, writeFile, readFile } = require('fs/promises');
-const { copy } = require('fs-extra');
+const { copy, copySync } = require('fs-extra');
 const rimraf = require('rimraf');
 const Handlebars = require('handlebars');
 const cheerio = require('cheerio');
@@ -38,6 +38,12 @@ function build () {
           const $ = cheerio.load(TEMPLATE_POST);
           meta.path = dir;
           allPostMetaData.push(meta);
+
+          copyAssets(dir);
+
+          if(meta.image) {
+            meta.imagepath = `${dir}/assets/${meta.image}`;
+          }
           
           if(allPostMetaData.length === allPostDirs.length) {
             const sortedPosts = allPostMetaData.sort((a,b) => {
@@ -51,11 +57,7 @@ function build () {
             writeFile(`${BUILD_PATH}/index.html`, $main.html());
           }
 
-          copyAssets(dir);
-
-          if(meta.image) {
-            meta.imagepath = `${dir}/assets/${meta.image}`;
-          }
+          
 
           $('body').append(source.toString());
           const template = Handlebars.compile($.html());
@@ -73,11 +75,7 @@ function build () {
   });
 
   function copyAssets(path) {
-    copy(`${POSTS_PATH}/${path}/${ASSETS_DIRNAME}`, `${BUILD_PATH}/${path}/${ASSETS_DIRNAME}`)
-    .then()
-    .catch(() => {
-      console.error('🔴');
-    })
+    copySync(`${POSTS_PATH}/${path}/${ASSETS_DIRNAME}`, `${BUILD_PATH}/${path}/${ASSETS_DIRNAME}`)
   }
 
   COPYPATHS.forEach((path) => {
