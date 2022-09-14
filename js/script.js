@@ -9,11 +9,11 @@ if (themeSwitcher) {
     const isChecked = e.target.checked;
   
     if (isChecked) {
-      localStorage.setItem("theme", "light");
+      localStorage.setItem("theme", "dark");
       checkAndSetTheme();
     }
     else {
-      localStorage.setItem("theme", "dark");
+      localStorage.setItem("theme", "light");
       checkAndSetTheme();
     }
   }
@@ -48,7 +48,7 @@ if (settingsBtn) {
   checkAndSetTheme();
   const getTheme = localStorage.getItem("theme") || "light";
   if (themeSwitcher) {
-    if (getTheme === "light") themeSwitcher.checked = true;
-    else themeSwitcher.checked = false;
+    if (getTheme === "light") themeSwitcher.checked = false;
+    else themeSwitcher.checked = true;
   }
 })();
