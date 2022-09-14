@@ -1,8 +1,8 @@
 .switch {
   position: relative;
   display: inline-block;
-  width: 34px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
   --light-slider-bg: #ccc;
   --dark-slider-bg: #555;
   --sun: #CCCCCC;
