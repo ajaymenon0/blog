@@ -41,10 +41,33 @@
   box-shadow: inset 0px 0px 0 transparent;
 }
 
+.slider:after {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 1px;
+  bottom: 0px;
+  background: repeating-conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 0deg 20deg,
+    #CCC 30deg 30deg
+  );
+  -webkit-transition: ease-in-out 300ms;
+  transition: ease-in-out 300ms;
+  border-radius: 50%;
+  box-shadow: inset 0px 0px 0 transparent;
+  z-index: -1;
+}
+
 input:checked + .slider:before {
   -webkit-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
   background-color: transparent;
   box-shadow: inset 6px 0px 0 0.9px var(--moon);
+}
+
+input:checked + .slider:after {
+  background: none;
 }
