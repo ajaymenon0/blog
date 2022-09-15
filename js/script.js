@@ -52,3 +52,19 @@ if (settingsBtn) {
     else themeSwitcher.checked = false;
   }
 })();
+
+// Progress bar 
+const progressBar = document.getElementById('progress-bar');
+
+if(progressBar) {
+  let processScroll = () => {
+    const docElem = document.documentElement;
+    const scrollTop = docElem['scrollTop'];
+    const scrollBottom = body['scrollHeight'] - window.innerHeight;
+    const scrollPercent = scrollTop / scrollBottom * 100 + '%';
+
+    progressBar.style.setProperty("--progress", scrollPercent); 
+  }
+  
+  document.addEventListener('scroll', processScroll);
+}

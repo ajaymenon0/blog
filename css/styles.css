@@ -180,3 +180,15 @@ article em {
 .settings.post {
   max-width: 800px;
 }
+
+/** Progress Bar for Posts */
+#progress-bar {
+  --progress: 0%;
+  position: fixed;
+  height: 10px;
+  width: var(--progress);
+  top: 0;
+  left: 0;
+  background-color: #77777777;
+  z-index: 2;
+}
