@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
+    "build": "node index.js",
     "watch": "nodemon --watch posts --watch templates --watch css --watch js -e html,css,js index.js",
     "serve": "serve docs",
     "dev": "concurrently --kill-others \"npm run watch\" \"npm run serve\"",
