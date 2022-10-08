@@ -13,7 +13,7 @@ const $main = cheerio.load(TEMPLATE_MAIN);
 const POSTS_PATH = './posts';
 const BUILD_PATH = './docs';
 const ASSETS_DIRNAME = 'assets';
-const COPYPATHS = ['css/', 'js/', 'favicon.ico'];
+const COPYPATHS = ['css/', 'js/', '/images', 'manifest.json', 'favicon.ico', 'service_worker.js'];
 
 
 function build () {

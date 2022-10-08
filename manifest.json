@@ -1,0 +1,28 @@
+{
+  "name": "Too lazy to title",
+  "short_name": "2L2T",
+  "start_url": ".",
+  "theme_color": "#333333",
+  "background_color": "#ffffff",
+  "display": "minimal-ui",
+  "icons":[
+    {
+      "src":"images/logo144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src":"images/logo192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src":"images/logo512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

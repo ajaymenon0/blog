@@ -4,6 +4,16 @@ const settingsBtn = document.getElementById("settings");
 const sidebar = document.getElementById("sidebar");
 const themeSwitcher = document.getElementById("theme");
 
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("service_worker.js").then((registration) => {
+    console.log("SW Registered!", registration);
+  }).catch(error=>{
+    console.log("SW Registration Failed");
+  });
+} else{
+  console.log("Not supported");
+}
+
 if (themeSwitcher) {
   themeSwitcher.onchange = (e) => {
     const isChecked = e.target.checked;
