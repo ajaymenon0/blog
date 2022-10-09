@@ -130,6 +130,8 @@ article blockquote:before, article blockquote:after {
 article .hero {
   width: 100%;
   margin-bottom: 1rem;
+  height: auto;
+  object-fit: cover;
 }
 
 article .attrib {
