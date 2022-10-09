@@ -19,13 +19,21 @@
   <link rel="manifest" href="manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,300&amp;display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,300&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+      <link
+          href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,300&display=swap"
+          rel="stylesheet"
+          type="text/css"
+      />
+  </noscript>
   <title>Are movie ratings a problem?</title>
 </head>
 <body>
   <div id="progress-bar"></div>
   <div class="settings post">
     <label class="switch">
+      theme
       <input type="checkbox" id="theme">
       <span class="slider"></span>
     </label>
