@@ -108,6 +108,7 @@ header h3 {
 article {
   max-width: 800px;
   margin: auto;
+  font-family: 'Alegreya', Tahoma, serif;;
 }
 
 article p {
