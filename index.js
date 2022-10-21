@@ -1,4 +1,4 @@
-const { readdirSync, readFileSync, mkdirSync } = require('fs');
+const { readdirSync, readFileSync, mkdirSync, existsSync } = require('fs');
 const { mkdir, writeFile, readFile } = require('fs/promises');
 const { copy, copySync } = require('fs-extra');
 const rimraf = require('rimraf');
@@ -25,7 +25,9 @@ function build () {
   const allPostDirs = getAllPosts();
   const allPostMetaData = [];
   
-  mkdirSync(BUILD_PATH);
+  if(!existsSync(BUILD_PATH)) {
+    mkdirSync(BUILD_PATH);
+  }
 
   allPostDirs.forEach(dir => {
     mkdir(`${BUILD_PATH}/${dir}`)
