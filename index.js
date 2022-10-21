@@ -55,8 +55,8 @@ function build () {
               const B = new Date(b.postedOn).getTime();
               return B - A;
             })
-            sortedPosts.forEach(postmeta => {
-              $main('.posts').append(buildPostCard(postmeta));
+            sortedPosts.forEach((postmeta, index) => {
+              $main('.posts').append(buildPostCard(postmeta, index));
             });
             writeFile(`${BUILD_PATH}/index.html`, $main.html());
           }
@@ -93,9 +93,9 @@ function build () {
   });
 }
 
-const buildPostCard = (metadata) => {
+const buildPostCard = (metadata, index) => {
   const dateString = new Date(metadata.postedOn).toDateString();
-  return `<li><a href="./${metadata.path}/"><h2>${metadata?.title || ''}</h2><p>${metadata.description}</p><h3>${dateString}</h3></a></li>`
+  return `<li style="--post-order: ${index+1};"><a href="./${metadata.path}/"><h2>${metadata?.title || ''}</h2><p>${metadata.description}</p><h3>${dateString}</h3></a></li>`
 }
 
 rimraf(`${BUILD_PATH}/*`, () => {

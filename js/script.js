@@ -5,8 +5,8 @@ const sidebar = document.getElementById("sidebar");
 const themeSwitcher = document.getElementById("theme");
 
 if("serviceWorker" in navigator){
-  navigator.serviceWorker.register("/service_worker.js").then((registration) => {
-    console.log("SW Registered!", registration);
+  navigator.serviceWorker.register("./service_worker.js").then((registration) => {
+    console.log("SW Registered!");
   }).catch(error=>{
     console.log("SW Registration Failed");
   });
