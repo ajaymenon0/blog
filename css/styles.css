@@ -226,3 +226,25 @@ article em {
     opacity: 1;
   }
 }
+
+@keyframes blurOut {
+  0% {
+    filter: blur(20px);
+  }
+
+  50% {
+    filter: blur(10px);
+  }
+
+  100% {
+    filter: blur(0px);
+  }
+}
+
+.blurry-load {
+  filter: blur(8px);
+}
+
+.blur-out {
+  animation: blurOut 100ms ease-out;
+}

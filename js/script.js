@@ -79,3 +79,27 @@ if(progressBar) {
   
   document.addEventListener('scroll', processScroll);
 }
+
+// Cherry picked from https://github.com/dombrant/blurry-image-load/
+const loadImages = () => {
+  const images = document.querySelectorAll(".blurry-load");
+
+  for (let image of images) {
+    const currentImage = new Image();
+    currentImage.src = image.getAttribute("data-src");
+
+    currentImage.onload = () => {
+      image.src = currentImage.src;
+      image.classList.add("blur-out");
+      image.classList.remove("blurry-load");
+    };
+  }
+}
+
+
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    loadImages();
+  }
+};
+

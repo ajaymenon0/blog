@@ -4,6 +4,7 @@ const { copy, copySync } = require('fs-extra');
 const rimraf = require('rimraf');
 const Handlebars = require('handlebars');
 const cheerio = require('cheerio');
+const sharp = require('sharp');
 
 const TEMPLATE_POST = readFileSync('./templates/post.html', 'utf-8');
 const TEMPLATE_MAIN = readFileSync('./templates/main.html', 'utf-8');
@@ -14,7 +15,6 @@ const POSTS_PATH = './posts';
 const BUILD_PATH = './docs';
 const ASSETS_DIRNAME = 'assets';
 const COPYPATHS = ['css/', 'js/', '/images', 'manifest.json', 'favicon.ico', 'service_worker.js'];
-
 
 function build () {
   const getAllPosts = () =>
@@ -61,12 +61,20 @@ function build () {
             writeFile(`${BUILD_PATH}/index.html`, $main.html());
           }
 
-          
-
           $('body').append(source.toString());
           const template = Handlebars.compile($.html());
           const outputHTML = template(meta);
-          writeFile(`${BUILD_PATH}/${dir}/index.html`, outputHTML);
+          const $post = cheerio.load(outputHTML);
+          $post('img').each((i, e) => {
+            const imgsrc = $post(e).attr("src");
+            const imageFileName = imgsrc.split('/').pop();
+            const smallImagePath = imgsrc.replace(imageFileName, `sm-${imageFileName}`);
+            $post(e).attr('data-src', imgsrc);
+            $post(e).attr('src', smallImagePath);
+            $post(e).addClass('blurry-load');
+          })
+          const updatedOutputHTML = $post.html();
+          writeFile(`${BUILD_PATH}/${dir}/index.html`, updatedOutputHTML);
         })
       })
       .catch((err) => {
@@ -79,7 +87,21 @@ function build () {
   });
 
   function copyAssets(path) {
-    copySync(`${POSTS_PATH}/${path}/${ASSETS_DIRNAME}`, `${BUILD_PATH}/${path}/${ASSETS_DIRNAME}`)
+    copySync(`${POSTS_PATH}/${path}/${ASSETS_DIRNAME}`, `${BUILD_PATH}/${path}/${ASSETS_DIRNAME}`);
+    const files = readdirSync(`${BUILD_PATH}/${path}/${ASSETS_DIRNAME}`, { withFileTypes: true })
+    .filter(dirent => {
+      const imageRegx = new RegExp(/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i);
+      return !dirent.isDirectory() && imageRegx.test(dirent.name)
+    })
+    .map(dirent => dirent.name);
+    files.forEach((file) => {
+      sharp(`${BUILD_PATH}/${path}/${ASSETS_DIRNAME}/${file}`).resize({ width: 100 })
+      .toFile(`${BUILD_PATH}/${path}/${ASSETS_DIRNAME}/sm-${file}`)
+      .then(() => { /** Do something with the new file */})
+      .catch(function(err) {
+          console.error("Error: ", err);
+      });
+    });
   }
 
   COPYPATHS.forEach((path) => {
