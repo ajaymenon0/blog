@@ -36,7 +36,7 @@ i {
 }
 
 header {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 
@@ -51,6 +51,11 @@ header h1 {
   text-transform: uppercase;
   font-weight: 300;
   margin-bottom: 1rem;
+  line-height: 2.5rem;
+}
+
+header h2 {
+  line-height: 1.5rem;
 }
 
 header h3 {
@@ -75,7 +80,7 @@ header h3 {
 
 .posts li p {
   font-size: 14px;
-  line-height: 20px;
+  line-height: 24px;
   color: var(--textColor);
 }
 
@@ -87,6 +92,7 @@ header h3 {
 .posts h2 {
   font-size: 20px;
   color: var(--textColor);
+  margin-bottom: 6px;
 }
 
 .posts li {
@@ -143,6 +149,7 @@ article .hero {
   margin-bottom: 1rem;
   height: auto;
   object-fit: cover;
+  border-radius: 2px;
 }
 
 article .attrib {
