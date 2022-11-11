@@ -17,8 +17,7 @@
 }
 
 body {
-  /* font-family: 'Lato', sans-serif; */
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
   padding: 1rem 2rem 2rem;
   transition: background-color ease-in 400ms;
 }
