@@ -183,6 +183,25 @@ article em {
   font-style: italic;
 }
 
+article h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 32px 0 20px;
+  text-decoration: underline dotted var(--textColor) 1px;
+  text-underline-offset: 6px;
+}
+
+article .svg-image path, article .svg-image rect {
+  fill: var(--textColor);
+}
+
+article blockquote {
+  border-left: 3px solid var(--textColor);
+  padding-left: 24px;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
 .settings {
   position: relative;
   display: flex;
